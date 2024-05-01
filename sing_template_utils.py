@@ -113,17 +113,6 @@ template_json = {
                 "outbound": "dns-out"
             },
             {
-                "domain": [
-                    "yyhnet.top",
-                    "ddch.one"
-                ],
-                "domain_suffix": [
-                    ".yyhnet.top",
-                    ".ddch.one"
-                ],
-                "outbound": "direct"
-            },
-            {
                 "rule_set": "rule-private",
                 "outbound": "direct"
             },
