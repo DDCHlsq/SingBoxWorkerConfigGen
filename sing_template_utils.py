@@ -53,23 +53,23 @@ template_json = {
         "rules": [
             {
                 "outbound": "any",
-                "server": "dnspodtls"
+                "server": "ali"
             },
             {
                 "rule_set": "rule-direct",
-                "server": "dnspodtls"
+                "server": "ali"
             },
             {
                 "rule_set": "rule-private",
-                "server": "dnspodtls"
+                "server": "ali"
             },
             {
                 "rule_set": "rule-icloud",
-                "server": "dnspodtls"
+                "server": "ali"
             },
             {
                 "rule_set": "rule-apple",
-                "server": "dnspodtls"
+                "server": "ali"
             }
         ],
         "final": "google",
