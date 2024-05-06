@@ -129,10 +129,6 @@ template_json = {
                 "outbound": "direct"
             },
             {
-                "rule_set": "geosite-cn",
-                "outbound": "direct"
-            },
-            {
                 "rule_set": "rule-proxy",
                 "outbound": "proxy"
             },
@@ -158,13 +154,6 @@ template_json = {
             }
         ],
         "rule_set": [
-            {
-                "tag": "geosite-cn",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs",
-                "download_detour": "proxy"
-            },
             {
                 "tag": "rule-direct",
                 "type": "remote",
