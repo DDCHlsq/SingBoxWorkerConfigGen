@@ -39,16 +39,12 @@ template_json = {
                 "detour": "direct"
             },
             {
-                "tag": "dnspod",
-                "address": "https://1.12.12.12/dns-query",
-                "strategy": "prefer_ipv4",
-                "detour": "direct"
+                "tag": "refuseddns",
+                "address": "rcode://success"
             },
             {
-                "tag": "dnspodtls",
-                "address": "tls://1.12.12.12",
-                "strategy": "prefer_ipv4",
-                "detour": "direct"
+                "tag": "fakedns",
+                "address": "fakeip"
             }
         ],
         "rules": [
@@ -57,19 +53,34 @@ template_json = {
                 "server": "ali"
             },
             {
-                "rule_set": "rule-direct",
-                "server": "ali"
-            },
-            {
                 "rule_set": "rule-private",
                 "server": "ali"
             },
             {
-                "rule_set": "rule-icloud",
+                "rule_set": "rule-reject",
+                "server": "refuseddns"
+            },
+            {
+                "rule_set": [
+                    "rule-icloud",
+                    "rule-apple"
+                ],
                 "server": "ali"
             },
             {
-                "rule_set": "rule-apple",
+                "query_type": [
+                    "A",
+                    "AAAA"
+                ],
+                "rule_set": "rule-proxy",
+                "server": "fakedns"
+            },
+            {
+                "rule_set": "rule-proxy",
+                "server": "cf"
+            },
+            {
+                "rule_set": "rule-direct",
                 "server": "ali"
             }
         ],
@@ -79,7 +90,9 @@ template_json = {
         "independent_cache": False,
         "reverse_mapping": False,
         "fakeip": {
-            "enabled": False
+            "enabled": True,
+            "inet4_range": "198.18.0.0/15",
+            "inet6_range": "fc00::/18"
         }
     },
     "inbounds": [
