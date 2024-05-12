@@ -238,7 +238,7 @@ mobile_inbounds = [{
     "auto_route": True,
     "strict_route": True,
     "sniff": True,
-    "sniff_override_destination": True
+    "sniff_override_destination": False
 }]
 
 desktop_inbounds = [
