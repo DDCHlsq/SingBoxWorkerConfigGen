@@ -135,19 +135,14 @@ template_json = {
                 "outbound": "block"
             },
             {
-                "rule_set": "rule-icloud",
-                "outbound": "direct"
-            },
-            {
-                "rule_set": "rule-apple",
+                "rule_set": [
+                    "rule-icloud",
+                    "rule-apple"
+                ],
                 "outbound": "direct"
             },
             {
                 "rule_set": "rule-proxy",
-                "outbound": "proxy"
-            },
-            {
-                "rule_set": "rule-tld-not-cn",
                 "outbound": "proxy"
             },
             {
@@ -208,13 +203,6 @@ template_json = {
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/DDCHlsq/sing-ruleset/ruleset/icloud.srs",
-                "download_detour": "proxy"
-            },
-            {
-                "tag": "rule-tld-not-cn",
-                "type": "remote",
-                "format": "binary",
-                "url": "https://raw.githubusercontent.com/DDCHlsq/sing-ruleset/ruleset/tld-not-cn.srs",
                 "download_detour": "proxy"
             },
             {
