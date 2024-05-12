@@ -1,0 +1,53 @@
+name: Run and Release GeoIP Data
+
+on:
+  schedule:
+    # 每天早上8:00（GMT+8），UTC时间为0:00
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  run_script_and_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10.14'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      
+      - name: Run the cdn_geoip_tool script
+        run: |
+          python cdn_geoip_tool.py
+      
+      - name: Get the current date and time
+        id: datetime
+        run: echo "TIMESTAMP=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.TIMESTAMP }}
+          release_name: GeoIP Data Release ${{ env.TIMESTAMP }}
+          draft: false
+          prerelease: false
+          body: "GeoIP data by country."
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./ip_by_country.json
+          asset_name: ip_by_country.json
+          asset_content_type: application/json
