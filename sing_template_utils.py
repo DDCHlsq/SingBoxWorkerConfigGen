@@ -3,6 +3,7 @@ template_json = {
     "log": {
         "disabled": False,
         "level": "info",
+        "output": "box.log",
         "timestamp": True
     },
     "dns": {
