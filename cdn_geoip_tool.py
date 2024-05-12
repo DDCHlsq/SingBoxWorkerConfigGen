@@ -16,13 +16,14 @@ def fetch_ip_info(ip):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'}
     url = f'https://api.ip.sb/geoip/{ip}'
+    rate_limit = 0.8
     start_time = time.time()  # 请求开始时间
     try:
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         elapsed_time = time.time() - start_time  # 计算请求耗时
-        if elapsed_time < 0.5:
-            time.sleep(0.5 - elapsed_time)  # 如果请求耗时小于0.5秒，延时补足至0.5秒
+        if elapsed_time < rate_limit:
+            time.sleep(rate_limit - elapsed_time)  # 如果请求耗时小于请求下限，延时补足至请求下限
         return response.json()
     except requests.exceptions.HTTPError as errh:
         print(f"HTTP Error: {errh}")
