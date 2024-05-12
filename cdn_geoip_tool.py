@@ -16,7 +16,7 @@ def fetch_ip_info(ip):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'}
     url = f'https://api.ip.sb/geoip/{ip}'
-    rate_limit = 0.8
+    rate_limit = 1.5
     start_time = time.time()  # 请求开始时间
     try:
         response = requests.get(url, headers=headers)
