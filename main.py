@@ -29,16 +29,10 @@ def main(domain, uuid, platform, path):
             "type": "vless",
             "tag": new_tag,
             "server": ip['ip'],
-            "server_port": 443,
+            "server_port": 2052,
             "uuid": uuid,
             "tls": {
-                "enabled": True,
-                "server_name": domain,
-                "insecure": False,
-                "utls": {
-                    "enabled": True,
-                    "fingerprint": "chrome"
-                }
+                "enabled": False
             },
             "transport": {
                 "type": "ws",
