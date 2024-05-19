@@ -49,6 +49,10 @@ template_json = {
         ],
         "rules": [
             {
+                "query_type": "AAAA",
+                "server": "refuseddns"
+            },
+            {
                 "outbound": "any",
                 "server": "ali"
             },
@@ -234,7 +238,6 @@ mobile_inbounds = [{
     "tag": "tun",
     "type": "tun",
     "inet4_address": "172.19.0.1/30",
-    "inet6_address": "fdfe:dcba:9876::1/126",
     "mtu": 1400,
     "stack": "system",
     "auto_route": True,
